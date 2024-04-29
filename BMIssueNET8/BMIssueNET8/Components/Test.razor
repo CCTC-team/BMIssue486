@@ -1,0 +1,28 @@
+﻿@rendermode InteractiveServer
+
+<style>
+    .my-custom-modal-class {
+        padding-left: 400px;
+        padding-top: 300px;
+    }
+</style>
+
+
+<h3>Test</h3>
+
+<label>Test text input</label>
+<input type="text" />
+
+@code {
+
+    [Parameter]
+    public TestClass TestClass { get; set; }
+
+    [Parameter]
+    public string DateFormat { get; set; }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        Console.WriteLine("Test component rendered");
+    }
+}

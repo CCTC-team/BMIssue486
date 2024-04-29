@@ -1,0 +1,30 @@
+﻿@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+<p>.NET7 Blazored Modal 7.1.0 - For each character input into the modal text box observe 0 renders for each character input as expected (see console).</p>
+<p>.NET7 Blazored Modal 7.3.1 - For each character input into the modal text box observe 0 renders for each character input as expected (see console).</p>
+<button class="btn btn-primary" @onclick="ShowModal">Show Modal</button>
+
+@code {
+
+    [CascadingParameter]
+    public IModalService Modal { get; set; }
+
+    void ShowModal()
+    {
+
+        var options = new ModalOptions()
+            {
+                Class = "my-custom-modal-class"
+            };
+
+        var modParams = new ModalParameters();
+        var testClass = new TestClass();
+        modParams.Add("TestClass", testClass);
+        modParams.Add("DateFormat", "some date format");
+
+        Modal.Show<Test>("Test modal", modParams, options);
+    }
+}
